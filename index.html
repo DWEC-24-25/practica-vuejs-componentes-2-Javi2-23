@@ -1,40 +1,54 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <title>VueJS: Componentes</title>
-        <meta name="author" content="">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- TODO: Cargar CSS Bootstrap 5 (no es necesario el JS) -->
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>VueJS: Componentes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-    <body>
+<style>
+    .movie-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
 
-        <h1 id="autor">Autor: TU NOMBRE AQUÍ</h1>
+    .movie-card .card-body {
+        flex-grow: 1;
+    }
 
-        <!-- https://vuejs.org/guide/introduction.html -->
-        <div id="app">
-            <!--
-                 TODO: Aplicación Vue 3. Ver archivo ./js/script.js
-               - Mostrar el título de la colección dentro de un componente de Bootstrap 5. 
-                 En su interior habrá un <h1> con id "title" que mostrará el título de la colección.
-               - Para cada item: (https://vuejs.org/guide/essentials/list.html)
-                 - Crear un componente item-data
-            -->
+    .buttons-container {
+        margin-top: auto;
+    }
 
-            <!-- TODO: Mostrar el título de la colección dentro de un contenedor de Bootstrap 5 -->
-            
+    .edit-form {
+        padding-top: 10px;
+    }
+</style>
 
-            <!-- TODO: Iterar sobre los items y mostrar cada uno usando el componente item-data -->
-            
+<body class="bg-light">
+    <div id="app">
+        <div class="container mt-4">
+            <h1 id="autor" class="text-center fw-bold mb-4">Autor: JAVIER MARTÍNEZ JARA</h1>
 
+            <div class="bg-secondary text-white text-center py-3 rounded">
+                <h2 id="title" class="fw-bold mb-0">
+                    {{ title }}
+                </h2>
+            </div>
+
+            <p v-if="movies.length === 0" class="text-center mt-4">No hay películas disponibles.</p>
+
+            <div class="row mt-4">
+                <item-data v-for="movie in movies" :key="movie.name" :movie="movie"></item-data>
+            </div>
         </div>
+    </div>
 
-        <!-- TODO: Cargar librería Vue 3 y archivo js/script.js -->
-        
-
-    </body>
+    <script src="js/script.js"></script>
+</body>
 
 </html>
